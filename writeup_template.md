@@ -110,9 +110,22 @@ My final model results were:
 * validation set accuracy of 94.81 % 
 * test set accuracy of 93.28%
 
+An iterative approach was chosen:
+* First, I did some exploration on data and found that the data is un-balanced so I planned to do data-augmentation to increase data points for minority classes.
+* Then, I proceed to do pre-processing so I did image normalization so it have zero mean and unit variance, then I convert it to gray-scale to decrease dimensonality, since color doesn't make much of a difference.
+* Then, I used Le-Net architecture which is good starting point.
+* Then I added some drop-out layers to help in training the model so it doesn't overfit when adding more data-points.
+* Then I experimented with hyper-parameters for a bit, then found that default parameter of adam optimizer is sufficient and for drop out 0.2 is sufficient.
+* Then I proceed to generate more data-points through data-augmentation to make the model more general.
+* Then found the accuracy on test and validation data doesn't increase much with/out data-augmentation so I tried class weights.
+* Then I searched the internet for german traffic signs, and download an example for each label 
+* Then I used first the model with class weights it gives me accuracy of 67.8 %, so I tried the model with data augmentation and it gives me accuracy 69.77% which is better so I saved the model with data-augmentation for future fine-tuning or transfer learning
+
 ### Test a Model on New Images
 
 #### 1. Choose five German traffic signs found on the web and provide them in the report. For each image, discuss what quality or qualities might be difficult to classify.
+
+I searched on the internet to find an example for each label on the data set, so I downloaded 43 images and add them to my repo `./examples`, I tried to include images with different background and different contrast and position and sizes so it can capture the real world scenarios.
 
 Here are German traffic signs that I found on the web:
 
